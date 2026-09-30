@@ -1,0 +1,301 @@
+{
+  "detected": 140,
+  "published": 135,
+  "drafts": 5,
+  "categories": [
+    {
+      "slug": "retail-fmcg-quick-commerce",
+      "name": "Retail, FMCG & Quick Commerce",
+      "count": 29
+    },
+    {
+      "slug": "seo-local-search",
+      "name": "SEO & Local Search",
+      "count": 3
+    },
+    {
+      "slug": "digital-marketing",
+      "name": "Digital Marketing",
+      "count": 33
+    },
+    {
+      "slug": "social-media-content",
+      "name": "Social Media & Content",
+      "count": 4
+    },
+    {
+      "slug": "ai-business-automation",
+      "name": "AI for Business & Automation",
+      "count": 6
+    },
+    {
+      "slug": "artificial-intelligence",
+      "name": "Artificial Intelligence",
+      "count": 7
+    },
+    {
+      "slug": "msme-startup-growth",
+      "name": "MSME & Startup Growth",
+      "count": 40
+    },
+    {
+      "slug": "technology-security",
+      "name": "Technology & Digital Security",
+      "count": 3
+    },
+    {
+      "slug": "society-opinion",
+      "name": "Society & Opinion",
+      "count": 9
+    },
+    {
+      "slug": "personal-stories-culture",
+      "name": "Personal Stories & Culture",
+      "count": 6
+    }
+  ],
+  "duplicateCandidates": [
+    {
+      "leftId": 39,
+      "leftTitle": "Revolutionizing Grocery Shopping: How Amulyam Enterprises Empowers Kiranas in the Digital Age",
+      "rightId": 116,
+      "rightTitle": "Revolutionizing Grocery Shopping: How Amulyam Enterprises Empowers Kiranas in the Digital Age",
+      "score": 1.0,
+      "recommendation": "manual intent review; keep separate until approved"
+    },
+    {
+      "leftId": 75,
+      "leftTitle": "Best Digital Marketing Services in Lucknow: How Sudarshan AI Labs Transforms Small Businesses with AI-Powered Marketing Solutions",
+      "rightId": 89,
+      "rightTitle": "Best Digital Marketing Services in Lucknow: How Sudarshan AI Labs Transforms Small Businesses with AI-Powered Marketing Solutions",
+      "score": 1.0,
+      "recommendation": "manual intent review; keep separate until approved"
+    },
+    {
+      "leftId": 87,
+      "leftTitle": "Transform Your MSME Business in Lucknow: AI-Powered Digital Growth Solutions at Just ₹89/Month",
+      "rightId": 88,
+      "rightTitle": "Transform Your MSME Business in Lucknow: AI-Powered Digital Growth Solutions at Just ₹89/Month",
+      "score": 1.0,
+      "recommendation": "manual intent review; keep separate until approved"
+    },
+    {
+      "leftId": 93,
+      "leftTitle": "Hello there , I have read the guidelines and assure to adhere them. My medium handle is @sheevyumgoel",
+      "rightId": 94,
+      "rightTitle": "Hello there , I have read the guidelines and assure to adhere them. My medium handle is @sheevyumgoel",
+      "score": 1.0,
+      "recommendation": "manual intent review; keep separate until approved"
+    },
+    {
+      "leftId": 93,
+      "leftTitle": "Hello there , I have read the guidelines and assure to adhere them. My medium handle is @sheevyumgoel",
+      "rightId": 95,
+      "rightTitle": "Hello there , I have read the guidelines and assure to adhere them. My medium handle is @sheevyumgoel",
+      "score": 1.0,
+      "recommendation": "manual intent review; keep separate until approved"
+    },
+    {
+      "leftId": 94,
+      "leftTitle": "Hello there , I have read the guidelines and assure to adhere them. My medium handle is @sheevyumgoel",
+      "rightId": 95,
+      "rightTitle": "Hello there , I have read the guidelines and assure to adhere them. My medium handle is @sheevyumgoel",
+      "score": 1.0,
+      "recommendation": "manual intent review; keep separate until approved"
+    },
+    {
+      "leftId": 80,
+      "leftTitle": "‘How Gen-AI Will Skyrocket Indian Retail Productivity by 35–37%",
+      "rightId": 81,
+      "rightTitle": "How GenAI Will Skyrocket Indian Retail Productivity by 35–37%",
+      "score": 0.885,
+      "recommendation": "manual intent review; keep separate until approved"
+    },
+    {
+      "leftId": 92,
+      "leftTitle": "Hello there , I have read the guidelines and agree to adhere. My medium handle is @sheevumgoel",
+      "rightId": 93,
+      "rightTitle": "Hello there , I have read the guidelines and assure to adhere them. My medium handle is @sheevyumgoel",
+      "score": 0.849,
+      "recommendation": "manual intent review; keep separate until approved"
+    },
+    {
+      "leftId": 92,
+      "leftTitle": "Hello there , I have read the guidelines and agree to adhere. My medium handle is @sheevumgoel",
+      "rightId": 94,
+      "rightTitle": "Hello there , I have read the guidelines and assure to adhere them. My medium handle is @sheevyumgoel",
+      "score": 0.849,
+      "recommendation": "manual intent review; keep separate until approved"
+    },
+    {
+      "leftId": 92,
+      "leftTitle": "Hello there , I have read the guidelines and agree to adhere. My medium handle is @sheevumgoel",
+      "rightId": 95,
+      "rightTitle": "Hello there , I have read the guidelines and assure to adhere them. My medium handle is @sheevyumgoel",
+      "score": 0.849,
+      "recommendation": "manual intent review; keep separate until approved"
+    },
+    {
+      "leftId": 65,
+      "leftTitle": "Transforming Business Growth with Affordable Digital Marketing Services in Lucknow",
+      "rightId": 67,
+      "rightTitle": "Unleashing Business Growth with Affordable Digital Marketing in Lucknow: The Sudarshan AI Labs Advantage",
+      "score": 0.639,
+      "recommendation": "manual intent review; keep separate until approved"
+    },
+    {
+      "leftId": 65,
+      "leftTitle": "Transforming Business Growth with Affordable Digital Marketing Services in Lucknow",
+      "rightId": 70,
+      "rightTitle": "Transforming Lucknow’s Business Landscape with Affordable Digital Marketing and AI- Powered Growth",
+      "score": 0.63,
+      "recommendation": "manual intent review; keep separate until approved"
+    },
+    {
+      "leftId": 60,
+      "leftTitle": "Choose the Best Digital Marketing Agency in Lucknow — Sudarshan AI Labs : Grow Online in 2025",
+      "rightId": 131,
+      "rightTitle": "Best Digital Marketing Agency in Lucknow for MSMEs: Why Sudarshan AI Labs Leads the Game",
+      "score": 0.627,
+      "recommendation": "manual intent review; keep separate until approved"
+    },
+    {
+      "leftId": 28,
+      "leftTitle": "Digital Marketing Services in Lucknow: Boost Your Business with Sudarshan AI Labs (2025)",
+      "rightId": 63,
+      "rightTitle": "Top 6 Digital Marketing Strategies for Lucknow Small Businesses: Insights from Sudarshan AI Labs",
+      "score": 0.626,
+      "recommendation": "manual intent review; keep separate until approved"
+    },
+    {
+      "leftId": 68,
+      "leftTitle": "Sudarshan AI Labs: Affordable Digital Marketing Solutions for Lucknow Businesses",
+      "rightId": 75,
+      "rightTitle": "Best Digital Marketing Services in Lucknow: How Sudarshan AI Labs Transforms Small Businesses with AI-Powered Marketing Solutions",
+      "score": 0.615,
+      "recommendation": "manual intent review; keep separate until approved"
+    },
+    {
+      "leftId": 68,
+      "leftTitle": "Sudarshan AI Labs: Affordable Digital Marketing Solutions for Lucknow Businesses",
+      "rightId": 89,
+      "rightTitle": "Best Digital Marketing Services in Lucknow: How Sudarshan AI Labs Transforms Small Businesses with AI-Powered Marketing Solutions",
+      "score": 0.615,
+      "recommendation": "manual intent review; keep separate until approved"
+    },
+    {
+      "leftId": 77,
+      "leftTitle": "Digital Marketing Trends 2025: How NAVA-NETRA NEURAL SUDARSHAN AI LABS is Powering Lucknow’s Business Revolution",
+      "rightId": 85,
+      "rightTitle": "How NAVA-NETRA NEURAL SUDARSHAN AI LABS Is Powering Lucknow’s Business Revolution — a Multi-Intent, Trending SEO Guide for 2025",
+      "score": 0.61,
+      "recommendation": "manual intent review; keep separate until approved"
+    },
+    {
+      "leftId": 70,
+      "leftTitle": "Transforming Lucknow’s Business Landscape with Affordable Digital Marketing and AI- Powered Growth",
+      "rightId": 82,
+      "rightTitle": "India’s AI-Powered Business Revolution 2025: How Digital Marketing Trends Are Transforming Lucknow’s MSME Landscape",
+      "score": 0.6,
+      "recommendation": "manual intent review; keep separate until approved"
+    },
+    {
+      "leftId": 33,
+      "leftTitle": "Why Local Businesses in Lucknow Need Digital Marketing in 2025",
+      "rightId": 53,
+      "rightTitle": "Local Business Categories in Lucknow: Potential Clients for Digital Marketing & E‑Commerce",
+      "score": 0.592,
+      "recommendation": "manual intent review; keep separate until approved"
+    },
+    {
+      "leftId": 36,
+      "leftTitle": "AI-Powered Digital Marketing in Lucknow: 7X ROI Secrets for 2025",
+      "rightId": 129,
+      "rightTitle": "Digital Marketing in Lucknow: The Complete Growth Blueprint for 2026",
+      "score": 0.586,
+      "recommendation": "manual intent review; keep separate until approved"
+    }
+  ],
+  "manualReview": [
+    {
+      "id": 5,
+      "title": "Jatin",
+      "reason": "Extracted entry is empty, placeholder-like or below 100 words; page is preserved as noindex."
+    },
+    {
+      "id": 29,
+      "title": "Digital marketing agency Lucknow",
+      "reason": "Extracted entry is empty, placeholder-like or below 100 words; page is preserved as noindex."
+    },
+    {
+      "id": 55,
+      "title": "Revolutionizing Digital Marketing for Lucknow’s Small Businesses: Affordable AI- Powered Solutions “Unlock Lucknow’s Growth: Affordable AI Marketing to Transform Small Businesses”",
+      "reason": "Extracted entry is empty, placeholder-like or below 100 words; page is preserved as noindex."
+    },
+    {
+      "id": 81,
+      "title": "How GenAI Will Skyrocket Indian Retail Productivity by 35–37%",
+      "reason": "Extracted entry is empty, placeholder-like or below 100 words; page is preserved as noindex."
+    },
+    {
+      "id": 87,
+      "title": "Transform Your MSME Business in Lucknow: AI-Powered Digital Growth Solutions at Just ₹89/Month",
+      "reason": "Extracted entry is empty, placeholder-like or below 100 words; page is preserved as noindex."
+    },
+    {
+      "id": 88,
+      "title": "Transform Your MSME Business in Lucknow: AI-Powered Digital Growth Solutions at Just ₹89/Month",
+      "reason": "Extracted entry is empty, placeholder-like or below 100 words; page is preserved as noindex."
+    },
+    {
+      "id": 92,
+      "title": "Hello there , I have read the guidelines and agree to adhere. My medium handle is @sheevumgoel",
+      "reason": "Extracted entry is empty, placeholder-like or below 100 words; page is preserved as noindex."
+    },
+    {
+      "id": 93,
+      "title": "Hello there , I have read the guidelines and assure to adhere them. My medium handle is @sheevyumgoel",
+      "reason": "Extracted entry is empty, placeholder-like or below 100 words; page is preserved as noindex."
+    },
+    {
+      "id": 94,
+      "title": "Hello there , I have read the guidelines and assure to adhere them. My medium handle is @sheevyumgoel",
+      "reason": "Extracted entry is empty, placeholder-like or below 100 words; page is preserved as noindex."
+    },
+    {
+      "id": 95,
+      "title": "Hello there , I have read the guidelines and assure to adhere them. My medium handle is @sheevyumgoel",
+      "reason": "Extracted entry is empty, placeholder-like or below 100 words; page is preserved as noindex."
+    },
+    {
+      "id": 102,
+      "title": "Digital Dominance Pack – ₹1,399 Digital Growth Package for MSME “₹1399 mein poora business 360° digital — Lucknow ka bestseller pack.”",
+      "reason": "Extracted entry is empty, placeholder-like or below 100 words; page is preserved as noindex."
+    },
+    {
+      "id": 136,
+      "title": "₹89 Unicommerce Portal: Bringing Lucknow’s MSMEs Online",
+      "reason": "Source archive marks this entry as DRAFT; page is preserved as noindex."
+    },
+    {
+      "id": 137,
+      "title": "AI Products: Kisaan Saathi AI, Kirana AI & Vishnu’s Vision GPT Discover how Sudarshan AI Labs is transforming agriculture, retail and education for millions of Indians.",
+      "reason": "Source archive marks this entry as DRAFT; page is preserved as noindex."
+    },
+    {
+      "id": 138,
+      "title": "Google’s Agentic Era: Inside Google Research at I/O 2026",
+      "reason": "Source archive marks this entry as DRAFT; page is preserved as noindex."
+    },
+    {
+      "id": 139,
+      "title": "No‑Code Revolution: Build Scalable AI Solutions Without Coding Explore how Sudarshan AI Labs uses…",
+      "reason": "Source archive marks this entry as DRAFT; page is preserved as noindex."
+    },
+    {
+      "id": 140,
+      "title": "draft_post e507ed62c028",
+      "reason": "Source archive marks this entry as DRAFT; page is preserved as noindex."
+    }
+  ]
+}
