@@ -1,3 +1,4 @@
+import { siteUrl } from "@/lib/site";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { BlogArticleCard } from "@/components/BlogArticleCard";
@@ -9,15 +10,15 @@ import { BlogExplorer } from "./BlogExplorer";
 export const metadata: Metadata = {
   title: "Blogs & Articles | Sudarshan AI Labs",
   description: "Explore 140 articles by Sheevum Goel on AI, digital marketing, SEO, MSME growth, kirana retail, quick commerce and technology in India.",
-  alternates: { canonical: "/blogs/" },
+  alternates: { canonical: siteUrl("/blogs/") },
   openGraph: {
     title: "Blogs & Articles | Sudarshan AI Labs",
     description: "A 140-article knowledge library for Indian businesses, founders and MSMEs.",
     type: "website",
-    url: "/blogs/",
-    images: [{ url: "/og.png", width: 1200, height: 630, alt: "Sudarshan AI Labs knowledge library" }],
+    url: siteUrl("/blogs/"),
+    images: [{ url: siteUrl("/og.png"), width: 1200, height: 630, alt: "Sudarshan AI Labs knowledge library" }],
   },
-  twitter: { card: "summary_large_image", title: "Blogs & Articles | Sudarshan AI Labs", description: "A 140-article knowledge library for Indian businesses, founders and MSMEs.", images: ["/og.png"] },
+  twitter: { card: "summary_large_image", title: "Blogs & Articles | Sudarshan AI Labs", description: "A 140-article knowledge library for Indian businesses, founders and MSMEs.", images: [siteUrl("/og.png")] },
 };
 
 export default function BlogsPage() {
@@ -27,10 +28,10 @@ export default function BlogsPage() {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
     name: "Blogs & Articles",
-    url: "https://ai-digital-marketing-trends-india.sheevumgoel.chatgpt.site/blogs/",
+    url: siteUrl("/blogs/"),
     description: "A structured archive of 140 articles by Sheevum Goel.",
-    isPartOf: { "@type": "WebSite", name: "Sudarshan AI Labs", url: "https://ai-digital-marketing-trends-india.sheevumgoel.chatgpt.site" },
-    author: { "@type": "Person", name: "Sheevum Goel", url: "https://ai-digital-marketing-trends-india.sheevumgoel.chatgpt.site/blogs/author/sheevum-goel/" },
+    isPartOf: { "@type": "WebSite", name: "Sudarshan AI Labs", url: siteUrl("/") },
+    author: { "@type": "Person", name: "Sheevum Goel", url: siteUrl("/blogs/author/sheevum-goel/") },
     mainEntity: { "@type": "ItemList", numberOfItems: indexableArticles.length, itemListElement: latest.map((article, index) => ({ "@type": "ListItem", position: index + 1, name: article.title, url: article.canonical })) },
   };
 

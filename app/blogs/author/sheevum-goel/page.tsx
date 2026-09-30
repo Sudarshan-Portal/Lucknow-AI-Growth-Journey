@@ -1,3 +1,4 @@
+import { siteUrl } from "@/lib/site";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { BlogArticleCard } from "@/components/BlogArticleCard";
@@ -8,12 +9,12 @@ import { articles, categories } from "@/lib/blogs";
 export const metadata: Metadata = {
   title: "Sheevum Goel | Author at Sudarshan AI Labs",
   description: "Read articles by Sheevum Goel, founder of Sudarshan AI Labs, on AI adoption, digital marketing, MSMEs, Indian retail and Lucknow business growth.",
-  alternates: { canonical: "/blogs/author/sheevum-goel/" },
+  alternates: { canonical: siteUrl("/blogs/author/sheevum-goel/") },
 };
 
 export default function AuthorPage() {
   const latest = [...articles].filter((article) => article.indexable).sort((left, right) => (right.date ?? "").localeCompare(left.date ?? "")).slice(0, 12);
-  const schema = { "@context": "https://schema.org", "@type": "Person", name: "Sheevum Goel", jobTitle: "Founder, Sudarshan AI Labs", url: "https://ai-digital-marketing-trends-india.sheevumgoel.chatgpt.site/blogs/author/sheevum-goel/", sameAs: ["https://www.linkedin.com/in/sheevumgoel", "https://medium.com/@sheevumgoel"], worksFor: { "@type": "Organization", name: "Sudarshan AI Labs", url: "https://vyapai.in/" }, knowsAbout: categories.map((category) => category.name) };
+  const schema = { "@context": "https://schema.org", "@type": "Person", name: "Sheevum Goel", jobTitle: "Founder, Sudarshan AI Labs", url: siteUrl("/blogs/author/sheevum-goel/"), sameAs: ["https://www.linkedin.com/in/sheevumgoel", "https://medium.com/@sheevumgoel"], worksFor: { "@type": "Organization", name: "Sudarshan AI Labs", url: "https://vyapai.in/" }, knowsAbout: categories.map((category) => category.name) };
   return (
     <main className="library-shell">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />

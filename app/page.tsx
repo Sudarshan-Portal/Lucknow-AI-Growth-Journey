@@ -1,5 +1,7 @@
 "use client";
 
+import { siteUrl, sitePath, SITE_UPDATED_AT } from "@/lib/site";
+
 import { useEffect, useState } from "react";
 import { MediumRssWidget } from "@/components/MediumRssWidget";
 import { FooterLocationMap } from "@/components/FooterLocationMap";
@@ -54,7 +56,10 @@ const articleSchema = {
   headline: "Lucknow's AI Growth Story: From Search Signals to Smarter MSMEs",
   description: "An expert-led, source-checked field guide to AI digital marketing, local SEO and practical growth systems for Lucknow MSMEs.",
   datePublished: "2026-08-21",
-  dateModified: "2026-08-29",
+  dateModified: SITE_UPDATED_AT,
+  mainEntityOfPage: siteUrl("/"),
+  url: siteUrl("/"),
+  image: siteUrl("/og.png"),
   inLanguage: "en-IN",
   author: {
     "@type": "Person",
@@ -157,12 +162,12 @@ export default function Home() {
           <a href="#city">01 · Context</a>
           <a href="#signals">02 · Signals</a>
           <a href="#playbook">03 · Playbook</a>
-          <a href="/blogs/">05 · Blogs &amp; Articles</a>
-          <a className="nav-pop" href={serviceUrl} target="_blank" rel="noreferrer">LET'S GROW ↗</a>
+          <a href={sitePath("/blogs/")}>05 · Blogs &amp; Articles</a>
+          <a className="nav-pop" href={serviceUrl} target="_blank" rel="noreferrer">LET&apos;S GROW ↗</a>
         </div>
       </nav>
       <nav className="mobile-index" aria-label="Mobile story sections">
-        <a href="#city">Context</a><a href="#signals">Signals</a><a href="#playbook">Playbook</a><a href="#roadmap">90 days</a><a href="/blogs/">Blogs &amp; Articles</a><a href="#trust">Trust</a>
+        <a href="#city">Context</a><a href="#signals">Signals</a><a href="#playbook">Playbook</a><a href="#roadmap">90 days</a><a href={sitePath("/blogs/")}>Blogs &amp; Articles</a><a href="#trust">Trust</a>
       </nav>
 
       <header className="comic-hero">
@@ -170,9 +175,9 @@ export default function Home() {
         <div className="hero-copy">
           <div className="issue-line"><span>FIELD NOTES · ISSUE 01</span><b>LUCKNOW / 2026</b></div>
           <h1>
-            LUCKNOW'S<br />
+            LUCKNOW&apos;S<br />
             <span>AI GROWTH</span><br />
-            STORY
+            JOURNEY
           </h1>
           <p className="hero-subtitle">From search signals to smarter MSMEs — an expert-led digital marketing field guide.</p>
           <div className="hero-stickers" aria-label="Trust signals">
@@ -186,7 +191,7 @@ export default function Home() {
 
         <figure className="hero-panel">
           <span className="panel-label">COVER STORY</span>
-          <img src="/storyboard/ai-creativity.webp" alt="Comic artwork of an Indian AI creator using digital branding and content tools" fetchPriority="high" decoding="async" />
+          <img src={sitePath("/storyboard/ai-creativity.webp")} alt="Comic artwork of an Indian AI creator using digital branding and content tools" fetchPriority="high" decoding="async" />
           <figcaption>Creative direction: human judgement + AI-assisted execution.</figcaption>
           <i className="tape tape-a" /><i className="tape tape-b" />
         </figure>
@@ -206,13 +211,13 @@ export default function Home() {
         <div className="scene-heading">
           <span>SCENE 01</span>
           <h2>THE CITY IS<br /><em>CHANGING.</em></h2>
-          <p>Lucknow's AI ambition is real — but the careful version of the story matters.</p>
+          <p>Lucknow&apos;s AI ambition is real — but the careful version of the story matters.</p>
         </div>
 
         <div className="panel-grid city-grid">
           <figure className="story-panel city-art reveal">
             <div className="panel-top"><span>CONCEPT ART</span><b>NOT A PROJECT RENDER</b></div>
-            <img src="/storyboard/ai-city-concept.webp" alt="Comic concept artwork imagining Lucknow as a future AI hub" loading="lazy" decoding="async" />
+            <img src={sitePath("/storyboard/ai-city-concept.webp")} alt="Comic concept artwork imagining Lucknow as a future AI hub" loading="lazy" decoding="async" />
           </figure>
           <article className="story-panel text-panel yellow reveal">
             <span className="speech-tail" />
@@ -285,7 +290,7 @@ export default function Home() {
           </article>
           <figure className="story-panel evidence-hero reveal">
             <span className="evidence-tag">ORIGINAL EVIDENCE</span>
-            <img src="/trends/01-1000776056.jpg" alt="Google Trends related searches for digital marketing in India over the past three months" loading="lazy" decoding="async" />
+            <img src={sitePath("/trends/01-1000776056.jpg")} alt="Google Trends related searches for digital marketing in India over the past three months" loading="lazy" decoding="async" />
             <figcaption>India · Past 3 months · Web Search. Screenshot supplied for this article.</figcaption>
           </figure>
         </div>
@@ -293,11 +298,11 @@ export default function Home() {
         <section className="contact-sheet reveal" aria-label="Google Trends evidence gallery">
           <div className="sheet-heading"><span>CONTACT SHEET</span><h3>FIVE SNAPSHOTS. ONE CAUTIOUS STORY.</h3><p>Swipe horizontally on mobile.</p></div>
           <div className="sheet-scroll">
-            <figure><span>FRAME A</span><img src="/trends/01-1000776056.jpg" alt="Digital marketing top queries in India" loading="lazy" decoding="async" /><figcaption>Agency intent appears inside a mixed learning-and-hiring cluster.</figcaption></figure>
-            <figure><span>FRAME B</span><img src="/trends/03-1000776055.jpg" alt="Rising business queries in India" loading="lazy" decoding="async" /><figcaption>Business intelligence and WhatsApp-related activity point toward operational needs.</figcaption></figure>
-            <figure><span>FRAME C</span><img src="/trends/04-1000776050.jpg" alt="Social media marketing related queries in India" loading="lazy" decoding="async" /><figcaption>Strategy, services, SEO, management and email form a connected discovery path.</figcaption></figure>
-            <figure><span>FRAME D</span><img src="/trends/05-1000776051.jpg" alt="Additional social media marketing queries in India" loading="lazy" decoding="async" /><figcaption>Near-me, agency and company terms deserve strong local service pages.</figcaption></figure>
-            <figure><span>FRAME E</span><img src="/trends/02-1000776062.jpg" alt="Trending Now searches in India" loading="lazy" decoding="async" /><figcaption>Fast national spikes are useful only when the topic genuinely fits the brand.</figcaption></figure>
+            <figure><span>FRAME A</span><img src={sitePath("/trends/01-1000776056.jpg")} alt="Digital marketing top queries in India" loading="lazy" decoding="async" /><figcaption>Agency intent appears inside a mixed learning-and-hiring cluster.</figcaption></figure>
+            <figure><span>FRAME B</span><img src={sitePath("/trends/03-1000776055.jpg")} alt="Rising business queries in India" loading="lazy" decoding="async" /><figcaption>Business intelligence and WhatsApp-related activity point toward operational needs.</figcaption></figure>
+            <figure><span>FRAME C</span><img src={sitePath("/trends/04-1000776050.jpg")} alt="Social media marketing related queries in India" loading="lazy" decoding="async" /><figcaption>Strategy, services, SEO, management and email form a connected discovery path.</figcaption></figure>
+            <figure><span>FRAME D</span><img src={sitePath("/trends/05-1000776051.jpg")} alt="Additional social media marketing queries in India" loading="lazy" decoding="async" /><figcaption>Near-me, agency and company terms deserve strong local service pages.</figcaption></figure>
+            <figure><span>FRAME E</span><img src={sitePath("/trends/02-1000776062.jpg")} alt="Trending Now searches in India" loading="lazy" decoding="async" /><figcaption>Fast national spikes are useful only when the topic genuinely fits the brand.</figcaption></figure>
           </div>
         </section>
 
@@ -317,7 +322,7 @@ export default function Home() {
         <div className="services-layout">
           <figure className="story-panel services-art reveal">
             <div className="panel-top"><span>SERVICE MAP</span><b>SUDARSHAN AI LABS</b></div>
-            <img src="/blog-visuals/startup-team-collaboration.png" alt="Illustrated Sudarshan AI Labs creative about team collaboration for startups that scale" loading="lazy" decoding="async" />
+            <img src={sitePath("/blog-visuals/startup-team-collaboration.png")} alt="Illustrated Sudarshan AI Labs creative about team collaboration for startups that scale" loading="lazy" decoding="async" />
             <figcaption>Visual field note: smarter teams, faster growth and bigger business impact.</figcaption>
           </figure>
           <div className="service-notes">
@@ -333,7 +338,7 @@ export default function Home() {
         <div className="ads-story">
           <figure className="story-panel ads-art reveal">
             <span className="concept-stamp">ILLUSTRATIVE CONCEPT</span>
-            <img src="/storyboard/google-ads-concept.webp" alt="Comic concept artwork about Google Ads, AI-assisted search and Performance Max" loading="lazy" decoding="async" />
+            <img src={sitePath("/storyboard/google-ads-concept.webp")} alt="Comic concept artwork about Google Ads, AI-assisted search and Performance Max" loading="lazy" decoding="async" />
             <figcaption>Creative percentages and budget allocations shown in this artwork are fictional examples, not benchmarks or promises.</figcaption>
           </figure>
           <article className="story-panel text-panel white reveal">
@@ -388,7 +393,7 @@ export default function Home() {
             <a className="content-cta" href={labsUrl} target="_blank" rel="noreferrer"><span>From idea to implementation</span><b>Explore Sudarshan AI Labs</b><i>↗</i></a>
           </article>
           <figure className="story-panel automation-art reveal">
-            <img src="/blog-visuals/instruct-your-ai-app.png" alt="Illustrated guide cover asking how to properly instruct an AI application" loading="lazy" decoding="async" />
+            <img src={sitePath("/blog-visuals/instruct-your-ai-app.png")} alt="Illustrated guide cover asking how to properly instruct an AI application" loading="lazy" decoding="async" />
             <figcaption>Visual field note: useful automation begins with a clear instruction, a defined outcome and human review.</figcaption>
           </figure>
         </div>
@@ -413,7 +418,7 @@ export default function Home() {
         <div className="scene-heading split-title">
           <div><span>SCENE 05</span><h2>FIVE FRESH<br /><em>FIELD NOTES.</em></h2></div>
           <div className="scene-intro-card medium-intro">
-            <small>FROM SHEEVUM'S MEDIUM</small>
+            <small>FROM SHEEVUM&apos;S MEDIUM</small>
             <p>The five newest published stories, selected directly from the author feed and arranged from most recent to oldest.</p>
           </div>
         </div>
@@ -423,7 +428,7 @@ export default function Home() {
         <div className="editorial-visual reveal">
           <figure>
             <span>FEATURED VISUAL ESSAY</span>
-            <img src="/blog-visuals/ai-team-synergy.png" alt="Comic-style network diagram showing diverse teams connected through AI" loading="lazy" decoding="async" />
+            <img src={sitePath("/blog-visuals/ai-team-synergy.png")} alt="Comic-style network diagram showing diverse teams connected through AI" loading="lazy" decoding="async" />
           </figure>
           <article>
             <small>AI + PEOPLE + ALIGNMENT</small>
@@ -455,7 +460,7 @@ export default function Home() {
 
         <div className="author-story">
           <figure className="story-panel network-art reveal">
-            <img src="/blog-visuals/local-business-networking.png" alt="Illustrated Sudarshan AI Labs creative about local business networking and collaborative growth" loading="lazy" decoding="async" />
+            <img src={sitePath("/blog-visuals/local-business-networking.png")} alt="Illustrated Sudarshan AI Labs creative about local business networking and collaborative growth" loading="lazy" decoding="async" />
             <figcaption>Visual field note: trusted local connections can unlock referrals, shared resources and stronger growth.</figcaption>
           </figure>
           <article className="story-panel author-panel reveal">

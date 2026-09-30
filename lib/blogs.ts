@@ -1,3 +1,4 @@
+import { siteUrl, sitePath } from "./site";
 import rawData from "./blog-data.json";
 
 export type BlogBlock =
@@ -38,9 +39,9 @@ export type BlogArticle = {
 const data = rawData as unknown as { categories: BlogCategory[]; articles: BlogArticle[] };
 
 export const categories = data.categories;
-export const articles = data.articles;
+export const articles = data.articles.map((article) => ({ ...article, canonical: siteUrl(`/blogs/${article.slug}/`) }));
 export const publishedArticles = articles.filter((article) => article.status === "published");
-export const indexableArticles = articles.filter((article) => article.indexable);
+export const indexableArticles = articles.filter((article) => article.status === "published" && article.indexable);
 
 export const categoryImages: Record<string, string> = {
   "retail-fmcg-quick-commerce": "/library/marketing-collage.webp",
@@ -81,12 +82,12 @@ export function formatArticleDate(date: string | null) {
 }
 
 export function articleExcerpt(article: BlogArticle) {
-  const paragraph = article.blocks.find((block): block is Extract<BlogBlock, { type: "paragraph" }> => block.type === "paragraph");
+  const paragraph = article.blocks.find((block): block is Extract<BlogBlock, { text: string }> => block.type === "paragraph");
   return paragraph?.text ?? article.metaDescription;
 }
 
 export function articleImage(article: BlogArticle) {
-  return article.coverImage ?? categoryImages[article.category] ?? "/storyboard/ai-creativity.webp";
+  return sitePath(article.coverImage ?? categoryImages[article.category] ?? "/storyboard/ai-creativity.webp");
 }
 
 export function categoryCount(slug: string) {

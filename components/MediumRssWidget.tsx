@@ -1,5 +1,7 @@
 "use client";
 
+import { sitePath } from "@/lib/site";
+
 import { useCallback, useEffect, useState } from "react";
 
 export type MediumFeedArticle = {
@@ -27,9 +29,8 @@ export function MediumRssWidget({ fallbackArticles, profileUrl }: MediumRssWidge
   const [lastBuildDate, setLastBuildDate] = useState<string | null>(null);
 
   const loadFeed = useCallback(async () => {
-    setFeedState("loading");
     try {
-      const response = await fetch("/api/medium-feed", { headers: { Accept: "application/json" } });
+      const response = await fetch(sitePath("/api/medium-feed"), { headers: { Accept: "application/json" } });
       if (!response.ok) throw new Error("Feed unavailable");
 
       const data = (await response.json()) as FeedResponse;
@@ -45,6 +46,8 @@ export function MediumRssWidget({ fallbackArticles, profileUrl }: MediumRssWidge
   }, [fallbackArticles]);
 
   useEffect(() => {
+    // Feed state changes only after the asynchronous network request resolves.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     void loadFeed();
   }, [loadFeed]);
 
@@ -58,7 +61,7 @@ export function MediumRssWidget({ fallbackArticles, profileUrl }: MediumRssWidge
       <div className="rss-toolbar" aria-live="polite">
         <div className={`rss-status rss-status-${feedState}`}><span aria-hidden="true" /> <b>{statusText}</b><small>{updateText}</small></div>
         <div className="rss-actions">
-          <button type="button" onClick={() => void loadFeed()} disabled={feedState === "loading"}>
+          <button type="button" onClick={() => { setFeedState("loading"); void loadFeed(); }} disabled={feedState === "loading"}>
             {feedState === "loading" ? "REFRESHING…" : "REFRESH FEED"} ↻
           </button>
           <a href="https://medium.com/feed/@sheevumgoel" target="_blank" rel="noreferrer">RSS LINK ↗</a>

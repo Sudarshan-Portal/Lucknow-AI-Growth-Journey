@@ -1,3 +1,4 @@
+import { siteUrl, SITE_UPDATED_AT } from "@/lib/site";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -29,29 +30,29 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     return {
       title: `${category.name} Articles | Sudarshan AI Labs`,
       description: category.description,
-      alternates: { canonical: `/blogs/${category.slug}/` },
-      openGraph: { title: `${category.name} Articles`, description: category.description, type: "website", url: `/blogs/${category.slug}/` },
+      alternates: { canonical: siteUrl(`/blogs/${category.slug}/`) },
+      openGraph: { title: `${category.name} Articles`, description: category.description, type: "website", url: siteUrl(`/blogs/${category.slug}/`) },
     };
   }
   const article = getArticle(slug);
   if (!article) return {};
-  const image = articleImage(article);
+  const image = new URL(articleImage(article), siteUrl("/")).href;
   return {
     title: article.seoTitle,
     description: article.metaDescription,
     keywords: [article.primaryKeyword, ...article.secondaryKeywords],
-    authors: [{ name: article.author, url: "/blogs/author/sheevum-goel/" }],
-    alternates: { canonical: `/blogs/${article.slug}/` },
+    authors: [{ name: article.author, url: siteUrl("/blogs/author/sheevum-goel/") }],
+    alternates: { canonical: siteUrl(`/blogs/${article.slug}/`) },
     robots: article.indexable ? { index: true, follow: true } : { index: false, follow: true },
     openGraph: {
       title: article.seoTitle,
       description: article.metaDescription,
       type: "article",
-      url: `/blogs/${article.slug}/`,
+      url: siteUrl(`/blogs/${article.slug}/`),
       publishedTime: article.date ?? undefined,
       authors: ["Sheevum Goel"],
       section: getCategoryName(article.category),
-      images: [{ url: image, alt: article.title }],
+      images: [{ url: image, alt: article.coverAlt ?? article.title }],
     },
     twitter: { card: "summary_large_image", title: article.seoTitle, description: article.metaDescription, images: [image] },
   };
@@ -67,12 +68,12 @@ function CategoryPage({ slug }: { slug: string }) {
   const items = getCategoryArticles(slug).sort((left, right) => (right.date ?? "").localeCompare(left.date ?? ""));
   const schema = {
     "@context": "https://schema.org", "@type": "CollectionPage", name: category.name,
-    url: `https://ai-digital-marketing-trends-india.sheevumgoel.chatgpt.site/blogs/${category.slug}/`,
+    url: siteUrl(`/blogs/${category.slug}/`),
     description: category.description,
     breadcrumb: { "@type": "BreadcrumbList", itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: "https://ai-digital-marketing-trends-india.sheevumgoel.chatgpt.site/" },
-      { "@type": "ListItem", position: 2, name: "Blogs & Articles", item: "https://ai-digital-marketing-trends-india.sheevumgoel.chatgpt.site/blogs/" },
-      { "@type": "ListItem", position: 3, name: category.name },
+      { "@type": "ListItem", position: 1, name: "Home", item: siteUrl("/") },
+      { "@type": "ListItem", position: 2, name: "Blogs & Articles", item: siteUrl("/blogs/") },
+      { "@type": "ListItem", position: 3, name: category.name, item: siteUrl(`/blogs/${category.slug}/`) },
     ] },
   };
   return (
@@ -101,17 +102,17 @@ function ArticlePage({ slug }: { slug: string }) {
   const articleSchema = {
     "@context": "https://schema.org", "@type": "BlogPosting", headline: article.title,
     description: article.metaDescription, url: article.canonical, mainEntityOfPage: article.canonical,
-    datePublished: article.date ?? undefined, dateModified: article.date ?? undefined, inLanguage: "en-IN",
-    image: `https://ai-digital-marketing-trends-india.sheevumgoel.chatgpt.site${articleImage(article)}`,
+    datePublished: article.date ? `${article.date}T00:00:00Z` : undefined, dateModified: SITE_UPDATED_AT, inLanguage: "en-IN",
+    image: new URL(articleImage(article), siteUrl("/")).href,
     articleSection: categoryName, wordCount: article.wordCount,
-    author: { "@type": "Person", name: "Sheevum Goel", url: "https://ai-digital-marketing-trends-india.sheevumgoel.chatgpt.site/blogs/author/sheevum-goel/", sameAs: ["https://www.linkedin.com/in/sheevumgoel", "https://medium.com/@sheevumgoel"] },
+    author: { "@type": "Person", name: "Sheevum Goel", url: siteUrl("/blogs/author/sheevum-goel/"), sameAs: ["https://www.linkedin.com/in/sheevumgoel", "https://medium.com/@sheevumgoel"] },
     publisher: { "@type": "Organization", name: "Sudarshan AI Labs", url: "https://vyapai.in/" },
   };
   const breadcrumbSchema = { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Home", item: "https://ai-digital-marketing-trends-india.sheevumgoel.chatgpt.site/" },
-    { "@type": "ListItem", position: 2, name: "Blogs & Articles", item: "https://ai-digital-marketing-trends-india.sheevumgoel.chatgpt.site/blogs/" },
-    { "@type": "ListItem", position: 3, name: categoryName, item: `https://ai-digital-marketing-trends-india.sheevumgoel.chatgpt.site/blogs/${article.category}/` },
-    { "@type": "ListItem", position: 4, name: article.title },
+    { "@type": "ListItem", position: 1, name: "Home", item: siteUrl("/") },
+    { "@type": "ListItem", position: 2, name: "Blogs & Articles", item: siteUrl("/blogs/") },
+    { "@type": "ListItem", position: 3, name: categoryName, item: siteUrl(`/blogs/${article.category}/`) },
+    { "@type": "ListItem", position: 4, name: article.title, item: article.canonical },
   ] };
 
   return (
