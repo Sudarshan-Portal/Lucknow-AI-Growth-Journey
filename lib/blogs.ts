@@ -31,6 +31,8 @@ export type BlogArticle = {
   wordCount: number;
   blocks: BlogBlock[];
   relatedIds: number[];
+  coverImage?: string;
+  coverAlt?: string;
 };
 
 const data = rawData as unknown as { categories: BlogCategory[]; articles: BlogArticle[] };
@@ -84,7 +86,7 @@ export function articleExcerpt(article: BlogArticle) {
 }
 
 export function articleImage(article: BlogArticle) {
-  return categoryImages[article.category] ?? "/storyboard/ai-creativity.webp";
+  return article.coverImage ?? categoryImages[article.category] ?? "/storyboard/ai-creativity.webp";
 }
 
 export function categoryCount(slug: string) {

@@ -128,7 +128,7 @@ function ArticlePage({ slug }: { slug: string }) {
             <p className="article-deck">{firstParagraph}</p>
             <div className="article-byline"><Link href="/blogs/author/sheevum-goel/"><span>SG</span><b>Sheevum Goel<small>Founder, Sudarshan AI Labs</small></b></Link><p><time>{formatArticleDate(article.date)}</time><span>{article.readingMinutes} min read</span><span>{article.wordCount.toLocaleString("en-IN")} words</span></p></div>
           </div>
-          <figure><img src={articleImage(article)} alt="" fetchPriority="high" decoding="async" /><figcaption>{categoryName} · Archive story</figcaption></figure>
+          <figure><img src={articleImage(article)} alt={article.coverAlt ?? article.title} fetchPriority="high" decoding="async" /><figcaption>{categoryName} · Archive story</figcaption></figure>
         </div>
       </header>
 

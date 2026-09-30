@@ -6,7 +6,7 @@ export function BlogArticleCard({ article, compact = false }: { article: BlogArt
   return (
     <article className={`library-card${compact ? " library-card-compact" : ""}`}>
       <Link className="library-card-image" href={`/blogs/${article.slug}/`} aria-label={`Read ${article.title}`}>
-        <img src={articleImage(article)} alt="" loading="lazy" decoding="async" />
+        <img src={articleImage(article)} alt={article.coverAlt ?? article.title} loading="lazy" decoding="async" />
         <span>{getCategoryName(article.category)}</span>
       </Link>
       <div className="library-card-body">

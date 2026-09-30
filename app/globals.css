@@ -483,7 +483,7 @@ img { max-width: 100%; height: auto; }
 .library-card { min-width: 0; display: flex; flex-direction: column; overflow: hidden; border: 4px solid var(--ink); color: var(--ink); background: white; box-shadow: 8px 8px 0 var(--ink); transition: transform .2s ease,box-shadow .2s ease; }
 .library-card:hover { transform: translate(3px,3px) rotate(-.25deg); box-shadow: 5px 5px 0 var(--ink); }
 .library-card-image { position: relative; display: block; height: 220px; overflow: hidden; border-bottom: 4px solid var(--ink); background: var(--cyan); }
-.library-card-image img { width: 100%; height: 100%; object-fit: cover; transition: transform .35s ease; }
+.library-card-image img { width: 100%; height: 100%; object-fit: contain; background: #f5f7fb; transition: transform .35s ease; }
 .library-card:hover .library-card-image img { transform: scale(1.035); }
 .library-card-image > span { position: absolute; left: 12px; bottom: 12px; max-width: calc(100% - 24px); padding: 7px 9px; border: 2px solid var(--ink); background: var(--yellow); font-size: 8px; font-weight: 1000; letter-spacing: .07em; box-shadow: 3px 3px 0 var(--ink); }
 .library-card-body { flex: 1; display: flex; flex-direction: column; padding: 23px; }
@@ -554,7 +554,7 @@ img { max-width: 100%; height: auto; }
 .article-byline b { font-size: 12px; }.article-byline small { display: block; margin-top: 3px; color: #59627e; font-size: 8px; }
 .article-byline > p { display: flex; flex-wrap: wrap; gap: 8px 15px; margin: 0; font-size: 9px; font-weight: 900; }
 .article-hero figure { position: relative; margin: 0; padding: 9px; border: 5px solid var(--ink); background: white; box-shadow: 11px 11px 0 var(--ink); transform: rotate(1.2deg); }
-.article-hero figure img { display: block; width: 100%; aspect-ratio: 4/3; border: 3px solid var(--ink); object-fit: cover; }
+.article-hero figure img { display: block; width: 100%; aspect-ratio: 4/3; border: 3px solid var(--ink); object-fit: contain; background: #f5f7fb; }
 .article-hero figcaption { padding: 11px 5px 3px; font-size: 8px; font-weight: 1000; letter-spacing: .1em; }
 
 .article-layout { display: grid; grid-template-columns: minmax(220px,.55fr) minmax(0,1.45fr); gap: clamp(35px,6vw,90px); align-items: start; max-width: 1320px; margin: 0 auto; padding: 75px clamp(24px,5vw,70px); }
