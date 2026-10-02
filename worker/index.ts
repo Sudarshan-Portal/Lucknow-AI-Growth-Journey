@@ -77,10 +77,7 @@ const worker = {
       }
       return new Response(lines.join("\n") + "\n", { headers: { "content-type": "text/plain; charset=utf-8", "cache-control": "public, max-age=3600" } });
     }
-    if (localPath === "/schema.org.jsonld") {
-      return env.ASSETS.fetch(new Request(new URL("/schema.org.jsonld", request.url), request));
-    }
-    if (SITE_BASE_PATH && env.ASSETS && /^\/(?:assets|box-covers|storyboard|blog-visuals|library|trends)\/|^\/(?:favicon\.svg|og\.png|file\.svg|globe\.svg|window\.svg|schema\.org\.jsonld|public_sitemap_enhanced\.xml)$/.test(localPath)) {
+    if (env.ASSETS && (/^\/(?:assets|box-covers|storyboard|blog-visuals|library|trends)\/|^\/(?:favicon\.svg|og\.png|file\.svg|globe\.svg|window\.svg|schema\.org\.jsonld|public_sitemap_enhanced\.xml)$/.test(localPath) || /\.(?:css|js|mjs|map|png|jpg|jpeg|webp|gif|svg|ico|woff2?|ttf)$/.test(localPath))) {
       const assetUrl = new URL(request.url);
       assetUrl.pathname = localPath;
       return env.ASSETS.fetch(new Request(assetUrl, request));
