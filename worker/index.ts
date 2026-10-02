@@ -40,14 +40,47 @@ const worker = {
     // Serve metadata files before framework slash normalization.
     if (localPath === "/sitemap.xml" || localPath === "/sitemap.xml/") {
       const escape = (value: string) => value.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&apos;");
-      const entries = sitemap().map((entry) => `<url><loc>${escape(entry.url)}</loc>${entry.lastModified ? `<lastmod>${new Date(entry.lastModified).toISOString()}</lastmod>` : ""}${entry.changeFrequency ? `<changefreq>${entry.changeFrequency}</changefreq>` : ""}${entry.priority !== undefined ? `<priority>${entry.priority}</priority>` : ""}</url>`).join("");
+      const entries = sitemap().map((entry) => `<url><loc>${escape(entry.url)}</loc>${entry.lastModified ? `<lastmod>${new Date(entry.lastModified).toISOString().split("T")[0]}</lastmod>` : ""}${entry.changeFrequency ? `<changefreq>${entry.changeFrequency}</changefreq>` : ""}${entry.priority !== undefined ? `<priority>${entry.priority}</priority>` : ""}</url>`).join("");
       return new Response(`<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${entries}</urlset>`, { headers: { "content-type": "application/xml; charset=utf-8", "cache-control": "public, max-age=3600" } });
     }
     if (localPath === "/robots.txt" || localPath === "/robots.txt/") {
       const config = robots();
-      return new Response(`User-agent: *\nAllow: /\nSitemap: ${config.sitemap}\nHost: ${config.host}\n`, { headers: { "content-type": "text/plain; charset=utf-8", "cache-control": "public, max-age=3600" } });
+      const rules = Array.isArray(config.rules) ? config.rules : [config.rules];
+      const lines: string[] = [
+        "# robots.txt for blogs.vyapai.in",
+        "# Editorial brand: Blogs and Articles for Lucknow AI Digital Journey",
+        "# Audience: MSMEs and small businesses across India",
+        "# Updated: 2026-10-02",
+        "",
+      ];
+      for (const rule of rules) {
+        if (!rule) continue;
+        const agents = Array.isArray(rule.userAgent) ? rule.userAgent : [rule.userAgent];
+        for (const agent of agents) {
+          lines.push(`User-agent: ${agent}`);
+        }
+        if (rule.allow) {
+          const allows = Array.isArray(rule.allow) ? rule.allow : [rule.allow];
+          for (const a of allows) lines.push(`Allow: ${a}`);
+        }
+        if (rule.disallow) {
+          const disallows = Array.isArray(rule.disallow) ? rule.disallow : [rule.disallow];
+          for (const d of disallows) lines.push(`Disallow: ${d}`);
+        }
+        lines.push("");
+      }
+      if (config.sitemap) {
+        lines.push(`Sitemap: ${config.sitemap}`);
+      }
+      if (config.host) {
+        lines.push(`Host: ${config.host}`);
+      }
+      return new Response(lines.join("\n") + "\n", { headers: { "content-type": "text/plain; charset=utf-8", "cache-control": "public, max-age=3600" } });
     }
-    if (SITE_BASE_PATH && env.ASSETS && /^\/(?:assets|box-covers|storyboard|blog-visuals|library|trends)\/|^\/(?:favicon\.svg|og\.png|file\.svg|globe\.svg|window\.svg)$/.test(localPath)) {
+    if (localPath === "/schema.org.jsonld") {
+      return env.ASSETS.fetch(new Request(new URL("/schema.org.jsonld", request.url), request));
+    }
+    if (SITE_BASE_PATH && env.ASSETS && /^\/(?:assets|box-covers|storyboard|blog-visuals|library|trends)\/|^\/(?:favicon\.svg|og\.png|file\.svg|globe\.svg|window\.svg|schema\.org\.jsonld|public_sitemap_enhanced\.xml)$/.test(localPath)) {
       const assetUrl = new URL(request.url);
       assetUrl.pathname = localPath;
       return env.ASSETS.fetch(new Request(assetUrl, request));

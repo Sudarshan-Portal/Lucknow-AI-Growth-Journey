@@ -4,45 +4,104 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl("/")),
-  title: "Lucknow’s AI Growth Journey | Sudarshan AI Labs",
-  description: "An expert-led, source-checked 2026 field guide to AI digital marketing, local SEO and practical growth systems for Lucknow MSMEs.",
+  title: "Blogs & Articles for Lucknow AI Digital Journey | MSME India",
+  description: "Practical AI, digital marketing, SEO, automation, retail and growth guides for MSMEs and small businesses across India, published from Lucknow.",
   keywords: [
-    "digital marketing agency",
-    "AI digital marketing",
-    "social media marketing services",
-    "SEO services in Lucknow",
-    "business intelligence tools",
-    "WhatsApp Business",
+    "MSME Growth in India",
+    "Artificial Intelligence for Small Business",
+    "Business Automation",
+    "Digital Marketing",
+    "SEO and Local Search",
+    "Social Media and Content",
+    "Retail, E-commerce and Quick Commerce",
+    "Technology and Digital Security",
+    "Sales, CRM and Customer Retention",
+    "Lucknow MSMEs",
   ],
-  authors: [{ name: "Sheevum Goel", url: "https://sheevum-goel-about.netlify.app/" }],
-  creator: "Sheevum Goel",
-  publisher: "Sudarshan AI Labs",
+  authors: [{ name: "Lucknow AI Digital Journey Editorial Desk", url: siteUrl("/") }],
+  creator: "Lucknow AI Digital Journey Editorial Desk",
+  publisher: "Vyapai",
   alternates: {
     canonical: siteUrl("/"),
   },
   openGraph: {
-    title: "Lucknow’s AI Growth Journey | Sheevum Goel",
-    description: "An expert-led storyboard decoding AI, search signals and practical MSME growth in Lucknow.",
+    title: "Blogs & Articles for Lucknow AI Digital Journey | MSME India",
+    description: "Practical AI, digital marketing, SEO, automation, retail and growth guides for MSMEs and small businesses across India, published from Lucknow.",
     type: "website",
     locale: "en_IN",
     url: siteUrl("/"),
-    images: [{ url: siteUrl("/og.png"), width: 1200, height: 630, alt: "Lucknow AI Growth Storybook — expert-led field guide by Sheevum Goel" }],
+    siteName: "Blogs and Articles for Lucknow AI Digital Journey",
+    images: [{ url: siteUrl("/og.png"), width: 1200, height: 630, alt: "Blogs and Articles for Lucknow AI Digital Journey" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Lucknow’s AI Growth Journey | Sheevum Goel",
-    description: "A source-checked comic field guide to AI digital marketing and Lucknow MSME growth.",
+    title: "Blogs & Articles for Lucknow AI Digital Journey | MSME India",
+    description: "Practical AI, digital marketing, SEO, automation, retail and growth guides for MSMEs and small businesses across India, published from Lucknow.",
     images: [siteUrl("/og.png")],
   },
   icons: { icon: siteUrl("/favicon.svg"), shortcut: siteUrl("/favicon.svg") },
   other: { "codex-preview": "development" },
 };
 
+const BASE = "https://blogs.vyapai.in";
+const PUBLISHER_ID = `${BASE}/#publisher`;
+const BLOG_ID = `${BASE}/#blog`;
+
 const siteSchema = {
   "@context": "https://schema.org",
   "@graph": [
-    { "@type": "WebSite", "@id": siteUrl("/#website"), url: siteUrl("/"), name: "Lucknow’s AI Growth Journey", inLanguage: "en-IN", publisher: { "@id": "https://vyapai.in/#organization" } },
-    { "@type": "Organization", "@id": "https://vyapai.in/#organization", name: "Sudarshan AI Labs", url: "https://vyapai.in/", founder: { "@type": "Person", name: "Sheevum Goel" }, areaServed: { "@type": "Country", name: "India" } },
+    {
+      "@type": "Organization",
+      "@id": PUBLISHER_ID,
+      name: "Vyapai",
+      alternateName: "Lucknow AI Digital Journey",
+      url: `${BASE}/`,
+      telephone: "+91-7080842220",
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Lucknow",
+        addressRegion: "Uttar Pradesh",
+        postalCode: "226016",
+        addressCountry: "IN",
+      },
+      areaServed: {
+        "@type": "Country",
+        name: "India",
+      },
+      logo: {
+        "@type": "ImageObject",
+        url: `${BASE}/logo.png`,
+        width: 512,
+        height: 512,
+      },
+    },
+    {
+      "@type": "Blog",
+      "@id": BLOG_ID,
+      name: "Blogs and Articles for Lucknow AI Digital Journey",
+      alternateName: "Lucknow AI Digital Journey",
+      url: `${BASE}/`,
+      description: "Practical AI, digital marketing, SEO, automation, e-commerce, retail and growth guides created to help MSMEs and small businesses across India.",
+      inLanguage: "en-IN",
+      publisher: {
+        "@id": PUBLISHER_ID,
+      },
+      audience: {
+        "@type": "BusinessAudience",
+        audienceType: "MSMEs, small businesses, retailers, founders and entrepreneurs in India",
+      },
+      about: [
+        { "@type": "Thing", name: "MSME Growth in India" },
+        { "@type": "Thing", name: "Artificial Intelligence for Small Business" },
+        { "@type": "Thing", name: "Business Automation" },
+        { "@type": "Thing", name: "Digital Marketing" },
+        { "@type": "Thing", name: "SEO and Local Search" },
+        { "@type": "Thing", name: "Social Media and Content" },
+        { "@type": "Thing", name: "Retail, E-commerce and Quick Commerce" },
+        { "@type": "Thing", name: "Technology and Digital Security" },
+        { "@type": "Thing", name: "Sales, CRM and Customer Retention" },
+      ],
+    },
   ],
 };
 

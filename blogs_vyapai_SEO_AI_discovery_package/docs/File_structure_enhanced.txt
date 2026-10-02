@@ -1,0 +1,52 @@
+ENHANCED FILE STRUCTURE — blogs.vyapai.in
+Editorial title: Blogs and Articles for Lucknow AI Digital Journey
+Primary audience: MSMEs and small businesses across India
+Location: Lucknow, Uttar Pradesh 226016, India
+Phone: +91-7080842220
+
+RECOMMENDED PRODUCTION STRUCTURE
+--------------------------------
+public/
+  robots.txt
+  schema.org.jsonld
+
+app/
+  routes/
+    sitemap.xml.ts
+  components/
+    SeoSchema.tsx
+
+README.md
+
+KEY CHANGES FROM THE ATTACHED FILE
+----------------------------------
+1. Removed all person-based author pages and person-based JSON-LD authorship.
+2. Replaced the blog identity with:
+   "Blogs and Articles for Lucknow AI Digital Journey".
+3. Publisher identity is organization-based ("Vyapai"), not a person.
+4. Added Lucknow 226016, India, +91-7080842220 and India-wide service area.
+5. Removed duplicate static + dynamic production sitemap strategy.
+6. Dynamic sitemap now automatically includes only published, indexable articles.
+7. Sitemap lastmod uses actual article/content dates instead of blindly stamping today's date.
+8. Added XML escaping for safer sitemap generation.
+9. Article schema upgraded from generic Article to BlogPosting.
+10. Added mainEntityOfPage, audience, contentLocation, organization publisher and editorial author.
+11. robots.txt now separates AI search/retrieval crawlers from model-training crawlers.
+12. Removed /_next/ blocking so front-end assets are not accidentally hidden from crawlers.
+13. Kept a separate cleaned static sitemap only as a fallback file.
+
+IMPORTANT
+---------
+Do not deploy both `public/sitemap.xml` and `app/routes/sitemap.xml.ts` to the same `/sitemap.xml` URL.
+Use the dynamic route in production.
+
+If `blog-data.json` or page templates still print a personal author name, replace that UI field with:
+Lucknow AI Digital Journey Editorial Desk
+
+FILES INCLUDED IN THE PRODUCTION ZIP
+------------------------------------
+public/robots.txt
+public/schema.org.jsonld
+app/routes/sitemap.xml.ts
+app/components/SeoSchema.tsx
+README.md

@@ -1,10 +1,11 @@
-import { siteUrl, SITE_UPDATED_AT } from "@/lib/site";
+import { siteUrl } from "@/lib/site";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { BlogArticleCard } from "@/components/BlogArticleCard";
 import { BlogSiteFooter } from "@/components/BlogSiteFooter";
 import { BlogSiteHeader } from "@/components/BlogSiteHeader";
+import { SeoSchema } from "@/components/SeoSchema";
 import {
   articleExcerpt,
   articleImage,
@@ -28,7 +29,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const category = getCategory(slug);
   if (category) {
     return {
-      title: `${category.name} Articles | Sudarshan AI Labs`,
+      title: `${category.name} Articles | Blogs and Articles for Lucknow AI Digital Journey`,
       description: category.description,
       alternates: { canonical: siteUrl(`/blogs/${category.slug}/`) },
       openGraph: { title: `${category.name} Articles`, description: category.description, type: "website", url: siteUrl(`/blogs/${category.slug}/`) },
@@ -38,23 +39,24 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!article) return {};
   const image = new URL(articleImage(article), siteUrl("/")).href;
   return {
-    title: article.seoTitle,
+    title: article.seoTitle || article.title,
     description: article.metaDescription,
-    keywords: [article.primaryKeyword, ...article.secondaryKeywords],
-    authors: [{ name: article.author, url: siteUrl("/blogs/author/sheevum-goel/") }],
+    keywords: [article.primaryKeyword, ...(article.secondaryKeywords || [])],
+    authors: [{ name: "Lucknow AI Digital Journey Editorial Desk", url: siteUrl("/") }],
     alternates: { canonical: siteUrl(`/blogs/${article.slug}/`) },
     robots: article.indexable ? { index: true, follow: true } : { index: false, follow: true },
     openGraph: {
-      title: article.seoTitle,
+      title: article.seoTitle || article.title,
       description: article.metaDescription,
       type: "article",
       url: siteUrl(`/blogs/${article.slug}/`),
       publishedTime: article.date ?? undefined,
-      authors: ["Sheevum Goel"],
+      modifiedTime: article.dateModified || article.updatedAt || article.date || undefined,
+      authors: ["Lucknow AI Digital Journey Editorial Desk"],
       section: getCategoryName(article.category),
       images: [{ url: image, alt: article.coverAlt ?? article.title }],
     },
-    twitter: { card: "summary_large_image", title: article.seoTitle, description: article.metaDescription, images: [image] },
+    twitter: { card: "summary_large_image", title: article.seoTitle || article.title, description: article.metaDescription, images: [image] },
   };
 }
 
@@ -70,15 +72,11 @@ function CategoryPage({ slug }: { slug: string }) {
     "@context": "https://schema.org", "@type": "CollectionPage", name: category.name,
     url: siteUrl(`/blogs/${category.slug}/`),
     description: category.description,
-    breadcrumb: { "@type": "BreadcrumbList", itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: siteUrl("/") },
-      { "@type": "ListItem", position: 2, name: "Blogs & Articles", item: siteUrl("/blogs/") },
-      { "@type": "ListItem", position: 3, name: category.name, item: siteUrl(`/blogs/${category.slug}/`) },
-    ] },
   };
   return (
     <main className="library-shell">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      <SeoSchema type="breadcrumb" categorySlug={category.slug} />
       <BlogSiteHeader />
       <header className="category-hero">
         <nav className="library-breadcrumb" aria-label="Breadcrumb"><Link href="/">Home</Link><span>›</span><Link href="/blogs/">Blogs &amp; Articles</Link><span>›</span><b>{category.name}</b></nav>
@@ -99,26 +97,11 @@ function ArticlePage({ slug }: { slug: string }) {
   const related = article.relatedIds.map(getArticleById).filter((item): item is NonNullable<typeof item> => Boolean(item));
   const categoryName = getCategoryName(article.category);
   const firstParagraph = articleExcerpt(article);
-  const articleSchema = {
-    "@context": "https://schema.org", "@type": "BlogPosting", headline: article.title,
-    description: article.metaDescription, url: article.canonical, mainEntityOfPage: article.canonical,
-    datePublished: article.date ? `${article.date}T00:00:00Z` : undefined, dateModified: SITE_UPDATED_AT, inLanguage: "en-IN",
-    image: new URL(articleImage(article), siteUrl("/")).href,
-    articleSection: categoryName, wordCount: article.wordCount,
-    author: { "@type": "Person", name: "Sheevum Goel", url: siteUrl("/blogs/author/sheevum-goel/"), sameAs: ["https://www.linkedin.com/in/sheevumgoel", "https://medium.com/@sheevumgoel"] },
-    publisher: { "@type": "Organization", name: "Sudarshan AI Labs", url: "https://vyapai.in/" },
-  };
-  const breadcrumbSchema = { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Home", item: siteUrl("/") },
-    { "@type": "ListItem", position: 2, name: "Blogs & Articles", item: siteUrl("/blogs/") },
-    { "@type": "ListItem", position: 3, name: categoryName, item: siteUrl(`/blogs/${article.category}/`) },
-    { "@type": "ListItem", position: 4, name: article.title, item: article.canonical },
-  ] };
 
   return (
     <main className="library-shell article-shell">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <SeoSchema type="article" articleSlug={article.slug} />
+      <SeoSchema type="breadcrumb" articleSlug={article.slug} />
       <BlogSiteHeader />
       <header className="article-hero">
         <nav className="library-breadcrumb" aria-label="Breadcrumb"><Link href="/">Home</Link><span>›</span><Link href="/blogs/">Blogs &amp; Articles</Link><span>›</span><Link href={`/blogs/${article.category}/`}>{categoryName}</Link><span>›</span><b>Article</b></nav>
@@ -127,7 +110,7 @@ function ArticlePage({ slug }: { slug: string }) {
             <div className="article-labels"><Link href={`/blogs/${article.category}/`}>{categoryName}</Link><span>POST #{article.id}</span>{!article.indexable && <b>{article.status === "draft" ? "DRAFT · NOINDEX" : "MANUAL REVIEW · NOINDEX"}</b>}</div>
             <h1>{article.title}</h1>
             <p className="article-deck">{firstParagraph}</p>
-            <div className="article-byline"><Link href="/blogs/author/sheevum-goel/"><span>SG</span><b>Sheevum Goel<small>Founder, Sudarshan AI Labs</small></b></Link><p><time>{formatArticleDate(article.date)}</time><span>{article.readingMinutes} min read</span><span>{article.wordCount.toLocaleString("en-IN")} words</span></p></div>
+            <div className="article-byline"><span>LD</span><b>Lucknow AI Digital Journey<small>Editorial Desk</small></b><p><time>{formatArticleDate(article.date)}</time><span>{article.readingMinutes} min read</span><span>{article.wordCount.toLocaleString("en-IN")} words</span></p></div>
           </div>
           <figure><img src={articleImage(article)} alt={article.coverAlt ?? article.title} fetchPriority="high" decoding="async" /><figcaption>{categoryName} · Archive story</figcaption></figure>
         </div>
@@ -152,7 +135,7 @@ function ArticlePage({ slug }: { slug: string }) {
           }) : <div className="empty-article"><h2>Source content unavailable</h2><p>The PDF archive contains a record for this entry but no extractable article body. The URL is reserved so the article is not silently lost.</p></div>}
 
           <section className="article-author-box">
-            <span>SG</span><div><small>ABOUT THE AUTHOR</small><h2>Sheevum Goel</h2><p>Founder of Sudarshan AI Labs, writing about practical AI adoption, digital growth, Indian MSMEs and the changing retail ecosystem from Lucknow.</p><Link href="/blogs/author/sheevum-goel/">VIEW AUTHOR ARCHIVE ↗</Link></div>
+            <span>LD</span><div><small>EDITORIAL IDENTITY &amp; PUBLISHER</small><h2>Lucknow AI Digital Journey Editorial Desk</h2><p>Published from Lucknow, Uttar Pradesh by Vyapai, delivering practical AI adoption frameworks, SEO and local marketing playbooks, and modern retail strategies for MSMEs and small businesses across India.</p><Link href="/blogs/">VIEW ALL 140 ARTICLES ↗</Link></div>
           </section>
           <section className="article-pathways"><small>CONTINUE THE TOPIC</small><h2>Useful next reads</h2>{related.slice(0, 5).map((item) => <Link key={item.id} href={`/blogs/${item.slug}/`}><span>{getCategoryName(item.category)}</span><b>{item.title}</b><i>↗</i></Link>)}</section>
         </article>

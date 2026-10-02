@@ -8,17 +8,17 @@ import { articles, categories, categoryCount, indexableArticles } from "@/lib/bl
 import { BlogExplorer } from "./BlogExplorer";
 
 export const metadata: Metadata = {
-  title: "Blogs & Articles | Sudarshan AI Labs",
-  description: "Explore 140 articles by Sheevum Goel on AI, digital marketing, SEO, MSME growth, kirana retail, quick commerce and technology in India.",
+  title: "Blogs & Articles | Lucknow AI Digital Journey",
+  description: "Explore 140 articles on AI, digital marketing, SEO, MSME growth, kirana retail, quick commerce and technology in India.",
   alternates: { canonical: siteUrl("/blogs/") },
   openGraph: {
-    title: "Blogs & Articles | Sudarshan AI Labs",
+    title: "Blogs & Articles | Lucknow AI Digital Journey",
     description: "A 140-article knowledge library for Indian businesses, founders and MSMEs.",
     type: "website",
     url: siteUrl("/blogs/"),
-    images: [{ url: siteUrl("/og.png"), width: 1200, height: 630, alt: "Sudarshan AI Labs knowledge library" }],
+    images: [{ url: siteUrl("/og.png"), width: 1200, height: 630, alt: "Lucknow AI Digital Journey knowledge library" }],
   },
-  twitter: { card: "summary_large_image", title: "Blogs & Articles | Sudarshan AI Labs", description: "A 140-article knowledge library for Indian businesses, founders and MSMEs.", images: [siteUrl("/og.png")] },
+  twitter: { card: "summary_large_image", title: "Blogs & Articles | Lucknow AI Digital Journey", description: "A 140-article knowledge library for Indian businesses, founders and MSMEs.", images: [siteUrl("/og.png")] },
 };
 
 export default function BlogsPage() {
@@ -29,9 +29,10 @@ export default function BlogsPage() {
     "@type": "CollectionPage",
     name: "Blogs & Articles",
     url: siteUrl("/blogs/"),
-    description: "A structured archive of 140 articles by Sheevum Goel.",
-    isPartOf: { "@type": "WebSite", name: "Sudarshan AI Labs", url: siteUrl("/") },
-    author: { "@type": "Person", name: "Sheevum Goel", url: siteUrl("/blogs/author/sheevum-goel/") },
+    description: "A structured archive of 140 articles on AI, MSME growth, and digital transformation.",
+    isPartOf: { "@type": "Blog", name: "Blogs and Articles for Lucknow AI Digital Journey", url: siteUrl("/") },
+    publisher: { "@type": "Organization", name: "Vyapai", url: "https://blogs.vyapai.in/" },
+    author: { "@type": "Organization", name: "Lucknow AI Digital Journey Editorial Desk", url: siteUrl("/") },
     mainEntity: { "@type": "ItemList", numberOfItems: indexableArticles.length, itemListElement: latest.map((article, index) => ({ "@type": "ListItem", position: index + 1, name: article.title, url: article.canonical })) },
   };
 
@@ -44,7 +45,7 @@ export default function BlogsPage() {
           <span className="library-kicker">FIELD NOTES · COMPLETE ARCHIVE</span>
           <h1>BLOGS <em>&amp;</em><br />ARTICLES</h1>
           <p>Ideas, investigations and practical playbooks spanning AI, marketing, local business, Indian retail and MSME growth.</p>
-          <div className="library-hero-actions"><a href="#all-articles-title">EXPLORE THE ARCHIVE ↓</a><Link href="/blogs/author/sheevum-goel/">MEET THE AUTHOR ↗</Link></div>
+          <div className="library-hero-actions"><a href="#all-articles-title">EXPLORE THE ARCHIVE ↓</a><a href="#categories">TOPIC CATEGORIES →</a></div>
         </div>
         <div className="library-hero-board" aria-label="Archive overview">
           <span>ISSUE</span><b>140</b><strong>ENTRIES</strong>

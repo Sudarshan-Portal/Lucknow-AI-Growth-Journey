@@ -3,7 +3,7 @@ import test from 'node:test';
 import {readFileSync} from 'node:fs';
 import {resolve} from 'node:path';
 
-const expected = process.env.EXPECTED_SITE_URL || 'https://www.blogs.vyapai.in';
+const expected = process.env.EXPECTED_SITE_URL || 'https://blogs.vyapai.in';
 const basePath = new URL(expected).pathname.replace(/\/$/, '');
 const data = JSON.parse(readFileSync(new URL('../lib/blog-data.json', import.meta.url), 'utf8'));
 const published = data.articles.filter(a => a.status === 'published' && a.indexable);
@@ -17,7 +17,7 @@ async function request(path) {
   return worker.fetch(new Request(expected + path, {headers:{accept:'text/html'}}), env, ctx);
 }
 test('canonical URLs, article schema and sharing previews match the deployment address', async () => {
-  for (const path of ['/', '/blogs/', '/blogs/' + published[0].slug + '/', '/blogs/author/sheevum-goel/']) {
+  for (const path of ['/', '/blogs/', '/blogs/' + published[0].slug + '/']) {
     const response = await request(path);
     assert.equal(response.status, 200, path);
     const html = await response.text();
@@ -31,7 +31,7 @@ test('sitemap includes only indexable published articles and uses canonical URLs
   assert.equal(response.status, 200);
   const xml = await response.text();
   const urls = [...xml.matchAll(/<loc>(.*?)<\/loc>/g)].map(m => m[1]);
-  assert.equal(urls.length, published.length + data.categories.length + 3);
+  assert.equal(urls.length, published.length + data.categories.length + 2);
   assert.ok(urls.every(url => url.startsWith(expected + '/')));
   assert.ok(!xml.includes('Invalid Date'));
 });

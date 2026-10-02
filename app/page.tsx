@@ -62,14 +62,16 @@ const articleSchema = {
   image: siteUrl("/og.png"),
   inLanguage: "en-IN",
   author: {
-    "@type": "Person",
-    name: "Sheevum Goel",
-    url: founderUrl,
-    sameAs: [linkedinUrl],
-    jobTitle: "Founder and AI Growth Strategist",
-    worksFor: { "@type": "Organization", name: "Sudarshan AI Labs", url: labsUrl },
+    "@type": "Organization",
+    name: "Lucknow AI Digital Journey Editorial Desk",
+    url: siteUrl("/"),
   },
-  publisher: { "@type": "Organization", name: "Sudarshan AI Labs", url: labsUrl },
+  publisher: {
+    "@type": "Organization",
+    "@id": "https://blogs.vyapai.in/#publisher",
+    name: "Vyapai",
+    url: "https://blogs.vyapai.in/",
+  },
   about: ["AI digital marketing", "local SEO", "Lucknow MSMEs", "Google Trends"],
 };
 

@@ -1,0 +1,84 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://blogs.vyapai.in/#publisher",
+      "name": "Vyapai",
+      "alternateName": "Lucknow AI Digital Journey",
+      "url": "https://blogs.vyapai.in/",
+      "telephone": "+91-7080842220",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Lucknow",
+        "addressRegion": "Uttar Pradesh",
+        "postalCode": "226016",
+        "addressCountry": "IN"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "India"
+      },
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://blogs.vyapai.in/logo.png",
+        "width": 512,
+        "height": 512
+      }
+    },
+    {
+      "@type": "Blog",
+      "@id": "https://blogs.vyapai.in/#blog",
+      "name": "Blogs and Articles for Lucknow AI Digital Journey",
+      "alternateName": "Lucknow AI Digital Journey",
+      "url": "https://blogs.vyapai.in/",
+      "description": "Practical AI, digital marketing, SEO, automation, e-commerce, retail and growth guides created to help MSMEs and small businesses across India.",
+      "inLanguage": "en-IN",
+      "publisher": {
+        "@id": "https://blogs.vyapai.in/#publisher"
+      },
+      "audience": {
+        "@type": "BusinessAudience",
+        "audienceType": "MSMEs, small businesses, retailers, founders and entrepreneurs in India"
+      },
+      "about": [
+        {
+          "@type": "Thing",
+          "name": "MSME Growth in India"
+        },
+        {
+          "@type": "Thing",
+          "name": "Artificial Intelligence for Small Business"
+        },
+        {
+          "@type": "Thing",
+          "name": "Business Automation"
+        },
+        {
+          "@type": "Thing",
+          "name": "Digital Marketing"
+        },
+        {
+          "@type": "Thing",
+          "name": "SEO and Local Search"
+        },
+        {
+          "@type": "Thing",
+          "name": "Social Media and Content"
+        },
+        {
+          "@type": "Thing",
+          "name": "Retail, E-commerce and Quick Commerce"
+        },
+        {
+          "@type": "Thing",
+          "name": "Technology and Digital Security"
+        },
+        {
+          "@type": "Thing",
+          "name": "Sales, CRM and Customer Retention"
+        }
+      ]
+    }
+  ]
+}

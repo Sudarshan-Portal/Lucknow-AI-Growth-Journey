@@ -1,0 +1,55 @@
+# robots.txt for blogs.vyapai.in
+# Editorial brand: Blogs and Articles for Lucknow AI Digital Journey
+# Audience: MSMEs and small businesses across India
+# Updated: 2026-10-02
+
+# Main search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# OpenAI search visibility, while keeping model-training crawler blocked
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: GPTBot
+Disallow: /
+
+# Anthropic search/user retrieval visibility, while keeping training crawler blocked
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+# Other AI/search discovery
+User-agent: PerplexityBot
+Allow: /
+
+# Google Gemini ecosystem visibility
+User-agent: Google-Extended
+Allow: /
+
+# Common large-scale dataset crawlers not required for discovery
+User-agent: CCBot
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+# Default
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+Disallow: /preview/
+
+Sitemap: https://blogs.vyapai.in/sitemap.xml

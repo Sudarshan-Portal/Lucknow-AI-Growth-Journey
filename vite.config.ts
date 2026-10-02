@@ -45,7 +45,7 @@ export default defineConfig(async () => {
 
   return {
     define: {
-      "process.env.NEXT_PUBLIC_SITE_ORIGIN": JSON.stringify(process.env.NEXT_PUBLIC_SITE_ORIGIN || "https://www.blogs.vyapai.in"),
+      "process.env.NEXT_PUBLIC_SITE_ORIGIN": JSON.stringify(process.env.NEXT_PUBLIC_SITE_ORIGIN || "https://blogs.vyapai.in"),
       "process.env.NEXT_PUBLIC_SITE_BASE_PATH": JSON.stringify(process.env.NEXT_PUBLIC_SITE_BASE_PATH || ""),
     },
     server: {

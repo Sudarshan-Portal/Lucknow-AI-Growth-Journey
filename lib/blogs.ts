@@ -21,6 +21,8 @@ export type BlogArticle = {
   slug: string;
   category: string;
   date: string | null;
+  dateModified?: string;
+  updatedAt?: string;
   status: "published" | "draft";
   indexable: boolean;
   author: string;
