@@ -21,7 +21,7 @@ const config = JSON.parse(readFileSync(configPath, "utf8"));
 config.name = "blogs-vyapai-in";
 config.workers_dev = false;
 config.routes = [
-  { pattern: "blogs.vyapai.in/*", zone_name: "vyapai.in", custom_domain: true },
+  { pattern: "blogs.vyapai.in", custom_domain: true },
 ];
 config.assets = {
   ...config.assets,
