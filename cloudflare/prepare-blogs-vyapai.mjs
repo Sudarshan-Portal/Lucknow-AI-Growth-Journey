@@ -7,6 +7,7 @@ const buildCmd = process.platform === "win32" ? "npx.cmd" : "npx";
 const result = spawnSync(buildCmd, ["vinext", "build"], {
   cwd: root,
   stdio: "inherit",
+  shell: true,
   env: {
     ...process.env,
     NEXT_PUBLIC_SITE_ORIGIN: "https://blogs.vyapai.in",
